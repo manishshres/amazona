@@ -1,35 +1,30 @@
 import React from "react";
 
 export default function Modal({ product, setShowModal }) {
-  const checkSpice = () => {
-    if (product.spice !== "") {
-      return true;
-    } else {
-      return false;
-    }
+  const closeModal = () => {
+    setShowModal(false);
   };
+
   return (
     <>
-      <div classNameName="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-        <div classNameName="relative w-auto my-6 mx-auto max-w-3xl">
-          <div classNameName="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-            <div classNameName="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
-              <h3 classNameName="text-xl font=semibold">{product.title}</h3>
+      <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
+              <h3 className="text-xl font=semibold">{product.title}</h3>
               <button
-                classNameName="bg-transparent border-0 text-black float-right"
+                className="bg-transparent border-0 text-black float-right"
                 onClick={() => setShowModal(false)}
               >
-                <span classNameName="text-black opacity-7 h-6 w-6 text-xl block  py-0 ">
+                <span className="text-black opacity-7 h-6 w-6 text-xl block  py-0 ">
                   x
                 </span>
               </button>
             </div>
-            <div classNameName="relative p-6 flex-auto">
-              {product.description}
-            </div>
+            <div className="relative p-6 flex-auto">{product.description}</div>
 
             <div>
-              {checkSpice ? (
+              {/* {checkSpice ? (
                 <div className="p-6 flex-auto justify-center">
                   <div className="mb-3 xl:w-96">
                     <label>Select Spice Level</label>
@@ -56,9 +51,9 @@ export default function Modal({ product, setShowModal }) {
                 </div>
               ) : (
                 ""
-              )}
+              )} */}
             </div>
-            <div classNameName="flex items-center justify-between p-6 border-t border-solid border-blueGray-200 rounded-b">
+            <div className="flex items-center justify-between p-6 border-t border-solid border-blueGray-200 rounded-b">
               <div className="w-auto md:w-1/6 lg:w-2/12 px-4">
                 <div className="inline-flex items-center px-4 font-semibold font-heading text-gray-500 border border-gray-200 focus:ring-blue-300 focus:border-blue-300 rounded-md">
                   <button className="py-2 hover:text-gray-700">
@@ -114,7 +109,7 @@ export default function Modal({ product, setShowModal }) {
                 </div>
               </div>
               <button
-                classNameName="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
                 onClick={() => setShowModal(false)}
               >
@@ -124,7 +119,7 @@ export default function Modal({ product, setShowModal }) {
           </div>
         </div>
       </div>
-      <div classNameName="opacity-25 fixed inset-0 z-40 bg-black"></div>
+      <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
     </>
   );
 }
