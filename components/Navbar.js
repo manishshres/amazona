@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
+import { Store } from "../utils/Store";
 
 function Navbar() {
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+
   return (
     <header className="flex justify-between text-rose-500 py-3 px-8 mb-0.5 shadow-md">
       <Link href="#">
@@ -16,8 +20,15 @@ function Navbar() {
         </li>
 
         <li>
-          <Link href="#">
-            <a>Cart</a>
+          <Link href="#" className="relative inline-block">
+            <a>
+              Cart
+              {cart.cartItems.length > 0 && (
+                <span className="absolute top-0 right-0 px-2 py-1 text-xs font-bold leading-none text-red-100 transform bg-red-600 rounded-full">
+                  {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                </span>
+              )}
+            </a>
           </Link>
         </li>
 

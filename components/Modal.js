@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Store } from "../utils/Store";
 
 export default function Modal({ product, setShowModal }) {
+  const { state, dispatch } = useContext(Store);
   const closeModal = () => {
     setShowModal(false);
+  };
+
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity: 1 } });
+    closeModal();
   };
 
   return (
@@ -14,7 +23,7 @@ export default function Modal({ product, setShowModal }) {
               <h3 className="text-xl font=semibold">{product.title}</h3>
               <button
                 className="bg-transparent border-0 text-black float-right"
-                onClick={() => setShowModal(false)}
+                onClick={closeModal}
               >
                 <span className="text-black opacity-7 h-6 w-6 text-xl block  py-0 ">
                   x
@@ -111,7 +120,7 @@ export default function Modal({ product, setShowModal }) {
               <button
                 className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
-                onClick={() => setShowModal(false)}
+                onClick={addToCartHandler}
               >
                 Add to Cart
               </button>

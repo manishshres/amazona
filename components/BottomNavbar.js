@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Store } from "../utils/Store";
 
 function BottomNavbar() {
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+
   return (
     <div className="md:hidden">
       <nav className="fixed bottom-0 inset-x-0 bg-white flex justify-between text-sm text-gray-500 uppercase font-mono top">
@@ -40,10 +44,10 @@ function BottomNavbar() {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
             />
           </svg>
-          Cart
+          Account
         </a>
 
         <a
@@ -61,10 +65,15 @@ function BottomNavbar() {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
             />
           </svg>
-          Account
+          Cart{" "}
+          {cart.cartItems.length > 0 && (
+            <span className="absolute top-0 right-0 px-2 py-1 text-xs font-bold leading-none text-red-100 transform bg-red-600 rounded-full">
+              {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+            </span>
+          )}
         </a>
       </nav>
     </div>
