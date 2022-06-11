@@ -1,6 +1,9 @@
 import React from "react";
 
-function SearchBar() {
+function SearchBar({ setSearchTerm, categories }) {
+  const updateSearchTerm = (e) => {
+    setSearchTerm(e.target.value);
+  };
   return (
     <div className="md:hidden mt-4 mb-2">
       <form>
@@ -30,13 +33,14 @@ function SearchBar() {
           <input
             type="search"
             id="default-search"
-            className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-red-500 focus:border-red-500"
+            className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-rose-500 focus:border-rose-500"
             placeholder="Search..."
             required
+            onChange={updateSearchTerm}
           />
           <button
             type="submit"
-            className="text-white absolute right-2.5 bottom-2.5 bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-md text-sm px-4 py-2"
+            className="text-white absolute right-2.5 bottom-2.5 bg-rose-500 hover:bg-rose-600 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-md text-sm px-4 py-2"
           >
             Search
           </button>

@@ -981,6 +981,7 @@ const data = {
   ],
 
   categories: [
+    "all",
     "appetizer",
     "bread",
     "vegetarian",

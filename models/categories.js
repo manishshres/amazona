@@ -1,4 +1,5 @@
 const categories = [
+  "all",
   "appetizer",
   "bread",
   "vegetarian",

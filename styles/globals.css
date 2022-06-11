@@ -23,3 +23,8 @@ body {
   margin-top: 1em;
   display: block;
 }
+
+.hero-bg {
+  background-position: 50%;
+  height: 350px;
+}
