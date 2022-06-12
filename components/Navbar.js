@@ -8,19 +8,19 @@ function Navbar() {
 
   return (
     <header className="flex justify-between text-rose-500 py-3 px-8 mb-0.5 shadow-md">
-      <Link href="#">
+      <Link href="/">
         <a className="text-2xl font-bold">restaurant</a>
       </Link>
 
       <ul className="hidden md:flex flex-row items-center align-middle gap-4">
         <li>
-          <Link href="#">
+          <Link href="/">
             <a className="bg-rose-500 text-white py-2 px-4 rounded-md">Home</a>
           </Link>
         </li>
 
         <li>
-          <Link href="#" className="relative inline-block">
+          <Link href="/cart" className="relative inline-block">
             <a>
               Cart
               {cart.cartItems.length > 0 && (
@@ -33,7 +33,7 @@ function Navbar() {
         </li>
 
         <li>
-          <Link href="#">
+          <Link href="/">
             <a>Account</a>
           </Link>
         </li>
