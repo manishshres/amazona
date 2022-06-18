@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar({ setSearchTerm, categories }) {
+function SearchBar({ setSearchTerm }) {
   const updateSearchTerm = (e) => {
     setSearchTerm(e.target.value);
   };

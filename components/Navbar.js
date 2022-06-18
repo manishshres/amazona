@@ -1,11 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import Link from "next/link";
-import { Store } from "../utils/Store";
 
-function Navbar() {
-  const { state, dispatch } = useContext(Store);
-  const { cart } = state;
-
+function Navbar({ cartItemsCount }) {
   return (
     <header className="flex justify-between text-rose-500 py-3 px-8 mb-0.5 shadow-md">
       <Link href="/">
@@ -15,7 +11,7 @@ function Navbar() {
       <ul className="hidden md:flex flex-row items-center align-middle gap-4">
         <li>
           <Link href="/">
-            <a className="bg-rose-500 text-white py-2 px-4 rounded-md">Home</a>
+            <a className="bg-rose-500 text-white py-2 px-4 rounded">Home</a>
           </Link>
         </li>
 
@@ -23,9 +19,9 @@ function Navbar() {
           <Link href="/cart" className="relative inline-block">
             <a>
               Cart
-              {cart.cartItems.length > 0 && (
+              {cartItemsCount > 0 && (
                 <span className="absolute top-0 right-0 px-2 py-1 text-xs font-bold leading-none text-red-100 transform bg-red-600 rounded-full">
-                  {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                  {cartItemsCount}
                 </span>
               )}
             </a>

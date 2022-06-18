@@ -1,11 +1,7 @@
 import Link from "next/link";
-import React, { useContext } from "react";
-import { Store } from "../utils/Store";
+import React from "react";
 
-function BottomNavbar() {
-  const { state, dispatch } = useContext(Store);
-  const { cart } = state;
-
+function BottomNavbar({ cartItemsCount }) {
   return (
     <div className="md:hidden">
       <nav className="fixed bottom-0 inset-x-0 bg-white flex justify-between text-sm text-gray-500 uppercase font-mono top">
@@ -64,9 +60,9 @@ function BottomNavbar() {
               />
             </svg>
             Cart
-            {cart.cartItems.length > 0 && (
+            {cartItemsCount > 0 && (
               <span className="absolute top-0 right-0 px-2 py-1 text-xs font-bold leading-none text-red-100 transform bg-red-600 rounded-full">
-                {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                {cartItemsCount}
               </span>
             )}
           </a>

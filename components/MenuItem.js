@@ -18,7 +18,7 @@ function MenuItem({ product }) {
         <div className="text-red-500 text-xl">${product.price}</div>
         <div className="justify-self-end">
           <button
-            className="bg-midnight text-sm text-white rounded-md px-4 py-2 addCartButton"
+            className="bg-midnight text-sm text-white rounded-lg px-4 py-2 addCartButton"
             onClick={openModal}
           >
             Add to Cart

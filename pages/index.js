@@ -2,7 +2,6 @@ import CatergoryBar from "../components/CatergoryBar";
 import Layout from "../components/Layout";
 import MainBox from "../components/MainBox";
 import SearchBar from "../components/SearchBar";
-import categories from "../models/categories";
 
 import React, { useState } from "react";
 

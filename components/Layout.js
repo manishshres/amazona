@@ -1,9 +1,18 @@
 import Head from "next/head";
-import React from "react";
 import BottomNavbar from "./BottomNavbar";
 import Navbar from "./Navbar";
+import { Store } from "../utils/Store";
+import React, { useState, useContext, useEffect } from "react";
 
 export default function Layout({ title, children }) {
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+
+  useEffect(() => {
+    setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
+  }, [cart.cartItems]);
+
   return (
     <>
       <div>
@@ -13,11 +22,14 @@ export default function Layout({ title, children }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <header>
-          <Navbar />
+          <Navbar cartItemsCount={cartItemsCount} />
         </header>
         <main className="container">{children}</main>
 
-        <BottomNavbar></BottomNavbar>
+        <BottomNavbar
+          cartItemsCount={cartItemsCount}
+          dispatch={dispatch}
+        ></BottomNavbar>
       </div>
     </>
   );

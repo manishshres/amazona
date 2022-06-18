@@ -1,7 +1,6 @@
 import React from "react";
 import MenuItem from "./MenuItem";
 
-import data from "../models/data";
 import MenuItemNotFound from "./MenuItemNotFound";
 
 function MainBox({ searchBy, filterBy, products }) {
@@ -22,14 +21,9 @@ function MainBox({ searchBy, filterBy, products }) {
     <>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 mb-4">
         {both.length > 0 ? (
-          both.map((product) => (
-            <>
-              {console.log(both)}
-              <MenuItem product={product} key={product.id} />
-            </>
-          ))
+          both.map((product) => <MenuItem product={product} key={product.id} />)
         ) : (
-          <MenuItemNotFound key={searchBy} item={searchBy} />
+          <MenuItemNotFound item={searchBy} />
         )}
       </div>
     </>
